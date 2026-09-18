@@ -1,6 +1,7 @@
 #include <stdio.h>
 #include "operator.h"
 #include "fichier.h"
+#include "liste.h"
 
 void exercice_operateurs() {
     int num1, num2;
@@ -58,6 +59,31 @@ void exercice_fichier() {
     }
 }
 
+void exercice_liste() {
+    struct liste_couleurs ma_liste;
+    init_liste(&ma_liste);
+
+    struct couleur couleurs[10] = {
+        {0xff, 0x00, 0x00, 0xff},
+        {0x00, 0xff, 0x00, 0xff},
+        {0x00, 0x00, 0xff, 0xff},
+        {0xff, 0xff, 0x00, 0xff},
+        {0xff, 0x00, 0xff, 0xff},
+        {0x00, 0xff, 0xff, 0xff},
+        {0x80, 0x80, 0x80, 0xff},
+        {0xff, 0xa5, 0x00, 0xff},
+        {0x80, 0x00, 0x80, 0xff},
+        {0x00, 0x00, 0x00, 0xff}
+    };
+
+    for (int i = 0; i < 10; i++) {
+        insertion(&couleurs[i], &ma_liste);
+    }
+
+    printf("Liste des couleurs :\n");
+    parcours(&ma_liste);
+}
+
 int main() {
     int choix;
 
@@ -76,7 +102,7 @@ int main() {
             exercice_fichier();
             break;
         case 7:
-            printf("Exercice 4.7 pas encore disponible.\n");
+            exercice_liste();
             break;
         default:
             printf("Choix invalide.\n");
