@@ -1,5 +1,6 @@
 #include <stdio.h>
 #include "operator.h"
+#include "fichier.h"
 
 void exercice_operateurs() {
     int num1, num2;
@@ -30,6 +31,33 @@ void exercice_operateurs() {
     printf("Resultat : %d\n", resultat);
 }
 
+void exercice_fichier() {
+    int choix;
+
+    printf("Que souhaitez-vous faire ?\n");
+    printf("1. Lire un fichier\n");
+    printf("2. Ecrire dans un fichier\n");
+    printf("Votre choix : ");
+    scanf("%d", &choix);
+
+    if (choix == 1) {
+        char nom[100];
+        printf("Entrez le nom du fichier a lire : ");
+        scanf("%s", nom);
+        lire_fichier(nom);
+    } else if (choix == 2) {
+        char nom[100];
+        char message[256];
+        printf("Entrez le nom du fichier dans lequel vous souhaitez ecrire : ");
+        scanf("%s", nom);
+        printf("Entrez le message a ecrire : ");
+        scanf(" %[^\n]", message);
+        ecrire_dans_fichier(nom, message);
+    } else {
+        printf("Choix invalide.\n");
+    }
+}
+
 int main() {
     int choix;
 
@@ -45,7 +73,7 @@ int main() {
             exercice_operateurs();
             break;
         case 2:
-            printf("Exercice 4.2 pas encore disponible.\n");
+            exercice_fichier();
             break;
         case 7:
             printf("Exercice 4.7 pas encore disponible.\n");
